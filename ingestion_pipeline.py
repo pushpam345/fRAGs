@@ -4,11 +4,8 @@ from langchain_text_splitters import CharacterTextSplitter
 from langchain_community.document_loaders import TextLoader, DirectoryLoader
 import os
 
-try:
-    from langchain_huggingface import HuggingFaceEmbeddings
-except ImportError as exc:
-    HuggingFaceEmbeddings = None
-    HUGGINGFACE_IMPORT_ERROR = exc
+
+from langchain_huggingface import HuggingFaceEmbeddings
 
 
 load_dotenv()
@@ -38,7 +35,7 @@ def load_document(docs_path="docs"):
 
 
 def split_document(documents, chunk_size=800, chunk_overlap=0):
-    print("splitting document into chunks")
+    print("------splitting document into chunks------")
     text_splitter = CharacterTextSplitter(
         chunk_overlap=chunk_overlap,
         chunk_size=chunk_size
